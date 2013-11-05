@@ -30,9 +30,9 @@ no_index:
 provides:
   Dist::Zilla::Plugin::Prereqs::AuthorDeps:
     file: lib/Dist/Zilla/Plugin/Prereqs/AuthorDeps.pm
-    version: 0.001
+    version: 0.002
 requires:
-  Dist::Zilla: 0
+  Dist::Zilla: 4
   Dist::Zilla::Role::PrereqSource: 0
   Dist::Zilla::Util::AuthorDeps: 0
   Moose: 0
@@ -45,5 +45,5 @@ resources:
   bugtracker: https://github.com/dagolden/Dist-Zilla-Plugin-Prereqs-AuthorDeps/issues
   homepage: https://github.com/dagolden/Dist-Zilla-Plugin-Prereqs-AuthorDeps
   repository: https://github.com/dagolden/Dist-Zilla-Plugin-Prereqs-AuthorDeps.git
-version: 0.001
+version: 0.002
 x_authority: cpan:DAGOLDEN

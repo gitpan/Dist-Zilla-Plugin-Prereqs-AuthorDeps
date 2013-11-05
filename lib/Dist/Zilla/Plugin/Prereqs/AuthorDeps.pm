@@ -4,13 +4,13 @@ use warnings;
 
 package Dist::Zilla::Plugin::Prereqs::AuthorDeps;
 # ABSTRACT: Add Dist::Zilla authordeps to META files as develop prereqs
-our $VERSION = '0.001'; # VERSION
+our $VERSION = '0.002'; # VERSION
 
 use Moose;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 
 use Dist::Zilla::Util::AuthorDeps;
-use Dist::Zilla;
+use Dist::Zilla 4;
 use Path::Class;
 
 with 'Dist::Zilla::Role::PrereqSource';
@@ -90,7 +90,7 @@ Dist::Zilla::Plugin::Prereqs::AuthorDeps - Add Dist::Zilla authordeps to META fi
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 

@@ -20,7 +20,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "apache",
   "NAME" => "Dist::Zilla::Plugin::Prereqs::AuthorDeps",
   "PREREQ_PM" => {
-    "Dist::Zilla" => 0,
+    "Dist::Zilla" => 4,
     "Dist::Zilla::Role::PrereqSource" => 0,
     "Dist::Zilla::Util::AuthorDeps" => 0,
     "Moose" => 0,
@@ -38,7 +38,7 @@ my %WriteMakefileArgs = (
     "Path::Tiny" => 0,
     "Test::More" => "0.96"
   },
-  "VERSION" => "0.001",
+  "VERSION" => "0.002",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -47,7 +47,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "CPAN::Meta" => 0,
-  "Dist::Zilla" => 0,
+  "Dist::Zilla" => 4,
   "Dist::Zilla::Role::PrereqSource" => 0,
   "Dist::Zilla::Tester" => 0,
   "Dist::Zilla::Util::AuthorDeps" => 0,
