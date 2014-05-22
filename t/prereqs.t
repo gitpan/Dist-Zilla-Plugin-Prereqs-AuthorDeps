@@ -10,7 +10,7 @@ use CPAN::Meta;
 require Dist::Zilla; # for VERSION
 
 my $root       = 'corpus/DZ';
-my $dz_version = Dist::Zilla->VERSION;
+my $dz_version = int( Dist::Zilla->VERSION );
 
 {
     my $tzil = Dist::Zilla::Tester->from_config( { dist_root => $root }, );
@@ -23,11 +23,13 @@ my $dz_version = Dist::Zilla->VERSION;
     my $prereqs = $meta->effective_prereqs;
 
     my $expected = {
+        'Devel::Foo'                               => 0.123,
         'Dist::Zilla'                              => $dz_version,
         'Dist::Zilla::PluginBundle::Basic'         => 4,
         'Dist::Zilla::Plugin::AutoPrereqs'         => 0,
         'Dist::Zilla::Plugin::MetaJSON'            => 0,
         'Dist::Zilla::Plugin::Prereqs::AuthorDeps' => 0,
+        # removed: Dist::Zilla::Plugin::RemovePrereqs
     };
 
     is_deeply( $prereqs->requirements_for(qw/develop requires/)->as_string_hash,

@@ -4,17 +4,22 @@ use warnings;
 
 package Dist::Zilla::Plugin::Prereqs::AuthorDeps;
 # ABSTRACT: Add Dist::Zilla authordeps to META files as develop prereqs
-our $VERSION = '0.002'; # VERSION
+our $VERSION = '0.003'; # VERSION
 
 use Moose;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 
 use Dist::Zilla::Util::AuthorDeps;
 use Dist::Zilla 4;
-use Path::Class;
+use Path::Class; # because DZU::AuthorDeps requires Path::Class objects
 
 with 'Dist::Zilla::Role::PrereqSource';
 
+#pod =attr phase
+#pod
+#pod Phase for prereqs. Defaults to 'develop'.
+#pod
+#pod =cut
 
 has phase => (
     is      => ro  =>,
@@ -23,6 +28,11 @@ has phase => (
     default => sub { 'develop' },
 );
 
+#pod =attr relation
+#pod
+#pod Relation type.  Defaults to 'requires'.
+#pod
+#pod =cut
 
 has relation => (
     is      => ro  =>,
@@ -31,6 +41,11 @@ has relation => (
     default => sub { 'requires' },
 );
 
+#pod =attr exclude
+#pod
+#pod Module to exclude from prereqs.  May be specified multiple times.
+#pod
+#pod =cut
 
 has exclude => (
     is => ro =>,
@@ -67,8 +82,10 @@ sub register_prereqs {
         $zilla->register_prereqs( { phase => $phase, type => $relation }, $mod, $version );
     }
 
-    $zilla->register_prereqs( { phase => $phase, type => $relation },
-        "Dist::Zilla", Dist::Zilla->VERSION, );
+    $zilla->register_prereqs(
+        { phase => $phase, type => $relation },
+        "Dist::Zilla", int( Dist::Zilla->VERSION ),
+    );
 
     return;
 }
@@ -90,7 +107,7 @@ Dist::Zilla::Plugin::Prereqs::AuthorDeps - Add Dist::Zilla authordeps to META fi
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 
@@ -147,6 +164,10 @@ L<https://github.com/dagolden/Dist-Zilla-Plugin-Prereqs-AuthorDeps>
 =head1 AUTHOR
 
 David Golden <dagolden@cpan.org>
+
+=head1 CONTRIBUTOR
+
+Karen Etheridge <ether@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 

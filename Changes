@@ -1,5 +1,17 @@
 Revision history for Dist-Zilla-Plugin-Prereqs-AuthorDeps
 
+0.003     2014-05-22 15:40:50-04:00 America/New_York
+
+    [CHANGED]
+
+    - Required Dist::Zilla version is now the integer portion only;
+      plugins may require a later version, but this plugin now only
+      mandates the last major release
+
+    [TESTS]
+
+    - Improved test coverage
+
 0.002     2013-11-04 23:02:57 America/New_York
 
     [FIXED]
